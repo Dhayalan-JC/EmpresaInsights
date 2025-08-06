@@ -1,0 +1,35 @@
+RewriteEngine On
+
+# Allow direct access to /commercial (even if file or folder doesn't exist)
+RewriteCond %{REQUEST_URI} ^/commercial/?$ [NC]
+RewriteRule ^ - [L]
+
+# Remove trailing .php or .html if the base file exists
+RewriteCond %{THE_REQUEST} ^GET\s+(.+)\.(php|html)\s+HTTP/ [NC]
+RewriteCond %{DOCUMENT_ROOT}/%1 -f
+RewriteRule ^(.+)\.(php|html)$ /$1 [R=301,L]
+
+# Add .php extension if the base file exists
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Add .html extension if the base file exists (only if .php doesn't)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Remove /index.php
+RewriteCond %{THE_REQUEST} ^.*/index\.php
+RewriteRule ^(.*)index\.php$ /$1 [R=301,L]
+
+# Redirect to 404 if the requested directory OR file (without extension) is not found
+RewriteCond %{REQUEST_URI} !^/commercial/?$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ - [L,R=404]
+
+# Custom Error Documents (optional)
+# ErrorDocument 404 https://ritikaadhwani.com/404.php
+# ErrorDocument 500 https://ritikaadhwani.com/500.php
