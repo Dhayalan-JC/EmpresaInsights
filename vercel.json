@@ -1,20 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "**/*.php",
-      "use": "@vercel/php@0.7.4",
-      "config": {
-        "includeFiles": [
-          "common/**/*.php",
-          "config/**/*.php",
-          "public/**/*.php",
-          "venobox/**/*",
-          "assets/**/*"
-        ]
-      }
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "vercel-php@0.7.4"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
