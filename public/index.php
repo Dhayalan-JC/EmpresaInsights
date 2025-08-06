@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>EMPRESA INSIGHTS</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <?php include("'/common/header.php'"); ?>
+    <!-- <?php include("'/common/header.php'"); ?> -->
+    <?php
+
+    // Now you can use the 'PROJECT_ROOT' constant to include files
+    // from anywhere in your project, simulating the behavior you want.
+    include(PROJECT_ROOT . '/common/header.php');
+    ?>
 </head>
+
 <body>
     <?php include('./common/header.php'); ?>
 
@@ -83,7 +91,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="flipbox_area pages pt-85 pb-70">
         <div class="container">
             <div class="row">
@@ -225,7 +233,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="service_area bg_color2 pt-85 pb-70">
         <div class="container">
             <div class="row">
@@ -355,7 +363,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="about_area bg_color2">
         <div class="container">
             <div class="row d-flex align-items-center pd_gap nagative_mb">
@@ -436,7 +444,7 @@
             </div>
         </div>
     </div>
-   
+
     <div
         class="counter_area white bg_before bg_fixed pt-280 pb-100"
         style="background-image: url(assets/images/slider/slider-6.jpg)">
@@ -497,7 +505,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="portfolio_area bg_color2 pt-80 pb-70" id="portfolio">
         <div class="container">
             <div class="row">
@@ -670,7 +678,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="team_area pt-85 pb-80">
         <div class="container">
             <div class="row">
@@ -792,7 +800,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="testimonial_area pt-20 pb-80">
         <div class="container">
             <div class="row">
@@ -905,7 +913,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="blog_area bg_color2 pt-80 pb-70">
         <div class="container">
             <div class="row">
@@ -1008,7 +1016,8 @@
             </div>
         </div>
     </div>
-   
+
     <?php include('./common/footer.php'); ?>
 </body>
+
 </html>
