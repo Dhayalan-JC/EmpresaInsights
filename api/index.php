@@ -1,30 +1,22 @@
 <?php
 
-// 1. Define a constant for the project's root directory.
-//    __DIR__ is the directory of the current file ('/api').
-//    dirname(__DIR__) goes up one level to the project's root folder.
+// Define the PROJECT_ROOT constant at the very top.
+// This allows you to include files from anywhere in your project.
 define('PROJECT_ROOT', dirname(__DIR__));
 
-// 2. Here are examples of how to use this constant for includes.
-//    You would typically put these in a main file or an autoloader.
+// Get the requested URI (e.g., '/about.php' or '/contact.php').
+$request_uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-// Example for including a common PHP file (like a header or a function file)
-// This assumes your file is located at '/common/header.php'
-// require_once PROJECT_ROOT . '/common/header.php';
-
-// Example for including a configuration file
-// This assumes your file is located at '/config/database.php'
-// require_once PROJECT_ROOT . '/config/database.php';
-
-// Example for a specific library or component
-// This assumes your file is located at '/venobox/init.php'
-// require_once PROJECT_ROOT . '/venobox/init.php';
-
-// Note: For static assets (CSS, JS, images) in 'assets' or 'venobox',
-//       these files should be placed inside your 'public' directory
-//       and linked directly in your HTML, not included with PHP.
-//       Example: <link rel="stylesheet" href="/assets/css/style.css">
-
-// 3. Finally, require your main application logic from the public directory.
-//    This line correctly loads your application's public index file.
-require PROJECT_ROOT . '/public/index.php';
+// A simple routing mechanism.
+if ($request_uri === '') {
+    // This is the home page.
+    require_once PROJECT_ROOT . '/index.php';
+} elseif (file_exists(PROJECT_ROOT . '/' . $request_uri)) {
+    // If a file with the requested name exists in the root, serve it.
+    // Example: A request for '/about.php' will serve the file 'about.php'.
+    require_once PROJECT_ROOT . '/' . $request_uri;
+} else {
+    // Handle 404 Not Found error.
+    header("HTTP/1.0 404 Not Found");
+    echo "<h1>404 Not Found</h1><p>The page you requested could not be found.</p>";
+}

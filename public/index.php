@@ -7,17 +7,11 @@
     <title>EMPRESA INSIGHTS</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <?php include("'/common/header.php'"); ?> -->
-    <?php
-
-    // Now you can use the 'PROJECT_ROOT' constant to include files
-    // from anywhere in your project, simulating the behavior you want.
-    include(PROJECT_ROOT . '/common/header.php');
-    ?>
+    <?php include(PROJECT_ROOT . '/common/header.php'); ?>
 </head>
 
 <body>
-    <?php include('./common/header.php'); ?>
+    <?php include(PROJECT_ROOT . './common/header.php'); ?>
 
     <div class="slider_list owl-carousel">
         <div class="slider_area d-flex align-items-center slider1" id="home">
@@ -1017,7 +1011,7 @@
         </div>
     </div>
 
-    <?php include('./common/footer.php'); ?>
+    <?php include(PROJECT_ROOT . './common/footer.php'); ?>
 </body>
 
 </html>
